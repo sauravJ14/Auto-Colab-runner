@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2  # Checks out your repository
+      uses: actions/checkout@v3  # Update to the latest version
 
     - name: Install colab-cli and gitpython
       run: |
