@@ -1,0 +1,6 @@
+Google Trends: An Overview of Analysis and Visualization 	python
+I analyzed Google Trends data with Kaggle, cleaned, preprocessed, and visualized it to identify patterns and correlations. 
+Insider biz scrapper  python
+Implemented a web scraper utilizing the library and the concurrent library for concurrent processing, allowing for efficient data extraction from Indian business websites.
+911 Calls Data Analysis python
+Exploring and Visualized Patterns and Trends in 911 Emergency Calls: A Data Analysis
