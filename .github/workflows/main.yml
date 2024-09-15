@@ -11,12 +11,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Update to the latest version
+      uses: actions/checkout@v3  # Use the latest version
 
     - name: Install colab-cli and gitpython
       run: |
-        pip install colab-cli  # Install colab-cli
-        pip install gitpython  # Install gitpython (required by colab-cli)
+        pip install --upgrade pip  # Upgrade pip to the latest version
+        pip install colab-cli gitpython  # Install required packages
 
     - name: Run Colab Notebook
       run: |
