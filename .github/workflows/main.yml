@@ -1,4 +1,4 @@
-name: Run Python Script
+name: Run Python Script and Update README
 
 on:
   schedule:
@@ -25,5 +25,18 @@ jobs:
 
     - name: Run Python script
       run: |
-        echo "Execution started at: $(date)" > log.txt
-        python generate_random_number.py >> log.txt 2>&1
+        echo "Execution started at: $(date)" > output.txt
+        python generate_random_number.py >> output.txt 2>&1
+
+    - name: Append output to README.md
+      run: |
+        echo "\n## Last Run Output - $(date)" >> README.md
+        cat output.txt >> README.md
+
+    - name: Commit changes
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'actions@github.com'
+        git add README.md
+        git commit -m "Update README.md with latest output"
+        git push
