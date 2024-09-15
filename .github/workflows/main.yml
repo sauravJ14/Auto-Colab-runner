@@ -31,7 +31,5 @@ jobs:
     # Run Google Colab Notebook and save output to log file
     - name: Run Google Colab Notebook
       run: |
-        {
-          echo "Execution started at: $(date)"
-          colab-cli run --path https://colab.research.google.com/drive/1qbxBtj9oRab0QSOaxmbLxFzRYgI4cGmb
-        } &> log.txt
+        echo "Execution started at: $(date)" > log.txt
+        colab-cli run --path https://colab.research.google.com/drive/1qbxBtj9oRab0QSOaxmbLxFzRYgI4cGmb >> log.txt 2>&1
