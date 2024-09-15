@@ -1,40 +1,29 @@
-name: Run Google Colab Notebook Manually
+name: Run Python Script
 
 on:
+  schedule:
+    - cron: '*/30 * * * *'  # Runs every 30 minutes
   workflow_dispatch:  # Allows manual triggering of the workflow
 
 jobs:
-  run-colab:
+  run-python-script:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Install Git
-    - name: Install Git
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y git
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'  # Specify the Python version
 
-    # Install colab-cli and gitpython
-    - name: Install colab-cli and gitpython
+    - name: Install dependencies
       run: |
-        pip install gitpython
-        pip install colab-cli
+        # Install dependencies if you have a requirements.txt file
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    # Check available colab-cli commands
-    - name: Check colab-cli commands
-      run: |
-        colab-cli --help > help_log.txt || true
-
-    # Verify colab-cli installation and version
-    - name: Verify colab-cli installation
-      run: |
-        colab-cli --version
-
-    # Write start time to log file and run the notebook
-    - name: Run Google Colab Notebook
+    - name: Run Python script
       run: |
         echo "Execution started at: $(date)" > log.txt
-        colab-cli run --path https://colab.research.google.com/drive/1qbxBtj9oRab0QSOaxmbLxFzRYgI4cGmb >> log.txt 2>&1 || { echo "Colab-CLI command failed"; exit 1; }
+        python generate_random_number.py >> log.txt 2>&1
