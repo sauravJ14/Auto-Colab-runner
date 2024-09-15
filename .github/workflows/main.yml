@@ -3,6 +3,7 @@ name: Run Google Colab Notebook
 on:
   schedule:
     - cron: '*/1 * * * *'  # Runs every minute
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   run-colab:
@@ -10,11 +11,11 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2  # Checkout your repository
+      uses: actions/checkout@v2  # Checks out your repository
 
     - name: Install colab-cli
-      run: pip install colab-cli  # Install colab-cli to interact with Google Colab
+      run: pip install colab-cli  # Install colab-cli
 
     - name: Run Colab Notebook
       run: |
-        colab-cli run --path https://github.com/sauravJ14/Auto-Colab-runner/blob/main/random_num_generator.ipynb  # Link to your Colab notebook in GitHub
+        colab-cli run --path https://github.com/sauravJ14/Auto-Colab-runner/blob/main/random_num_generator.ipynb
