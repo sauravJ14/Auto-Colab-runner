@@ -1,1 +1,22 @@
+name: Run Google Colab Notebook Daily
 
+on:
+  schedule:
+    # Runs every day at 9 AM UTC (change this to your preferred time)
+   - cron: '*/1 * * * *'
+
+jobs:
+  run-colab:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install colab-cli
+      run: |
+        pip install colab-cli
+
+    - name: Run Google Colab Notebook
+      run: |
+        colab-cli start --path https://colab.research.google.com/drive/1qbxBtj9oRab0QSOaxmbLxFzRYgI4cGmb
