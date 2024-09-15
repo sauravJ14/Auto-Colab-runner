@@ -1,7 +1,7 @@
-name: Run Colab Notebook Manually on Node.js 20
+name: Run Google Colab Notebook Manually
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # This allows you to trigger the workflow manually
 
 jobs:
   run-colab:
@@ -11,15 +11,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up Node.js 20
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
+    # Install Git
+    - name: Install Git
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git
 
+    # Install colab-cli
     - name: Install colab-cli
       run: |
         pip install colab-cli
 
+    # Run the Google Colab Notebook
     - name: Run Google Colab Notebook
       run: |
         colab-cli start --path https://colab.research.google.com/drive/1qbxBtj9oRab0QSOaxmbLxFzRYgI4cGmb
