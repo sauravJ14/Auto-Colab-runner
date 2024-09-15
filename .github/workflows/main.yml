@@ -1,10 +1,7 @@
 name: Run Google Colab Notebook Daily
 
 on:
-  schedule:
-    # Runs every day at 9 AM UTC (change this to your preferred time)
-   - cron: '*/1 * * * *'
-
+  workflow_dispatch:
 jobs:
   run-colab:
     runs-on: ubuntu-latest
