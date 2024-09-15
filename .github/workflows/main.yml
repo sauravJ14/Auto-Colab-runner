@@ -20,4 +20,4 @@ jobs:
 
     - name: Run Colab Notebook
       run: |
-        colab-cli run --path https://github.com/sauravJ14/Auto-Colab-runner/blob/main/random_num_generator.ipynb
+        colab-cli run --path https://colab.research.google.com/drive/1qbxBtj9oRab0QSOaxmbLxFzRYgI4cGmb?usp=sharing
