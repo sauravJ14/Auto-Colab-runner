@@ -13,8 +13,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2  # Checks out your repository
 
-    - name: Install colab-cli
-      run: pip install colab-cli  # Install colab-cli
+    - name: Install colab-cli and gitpython
+      run: |
+        pip install colab-cli  # Install colab-cli
+        pip install gitpython  # Install gitpython (required by colab-cli)
 
     - name: Run Colab Notebook
       run: |
