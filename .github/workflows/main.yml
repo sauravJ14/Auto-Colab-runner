@@ -28,8 +28,13 @@ jobs:
       run: |
         colab-cli --help > help_log.txt || true
 
-    # Run Google Colab Notebook and save output to log file
+    # Verify colab-cli installation and version
+    - name: Verify colab-cli installation
+      run: |
+        colab-cli --version
+
+    # Write start time to log file and run the notebook
     - name: Run Google Colab Notebook
       run: |
         echo "Execution started at: $(date)" > log.txt
-        colab-cli run --path https://colab.research.google.com/drive/1qbxBtj9oRab0QSOaxmbLxFzRYgI4cGmb >> log.txt 2>&1
+        colab-cli run --path https://colab.research.google.com/drive/1qbxBtj9oRab0QSOaxmbLxFzRYgI4cGmb >> log.txt 2>&1 || { echo "Colab-CLI command failed"; exit 1; }
