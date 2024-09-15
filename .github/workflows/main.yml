@@ -44,4 +44,4 @@ jobs:
         git commit -m "Update README.md with latest output"
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.PAT }}
+        GITHUB_TOKEN: ${{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}}
